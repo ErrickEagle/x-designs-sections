@@ -1,0 +1,56 @@
+/* X Designs — shared design tokens.
+   Every section styles itself from these, so a page assembled from several
+   sections reads as one system. Host sites override them on :root. */
+
+:root{
+  /* surfaces + ink */
+  --xd-bg:#F2F2F2;
+  --xd-surface:#FFFFFF;
+  --xd-ink:#0D0D0D;
+  --xd-ink-soft:rgba(13,13,13,.62);
+  --xd-line:rgba(25,36,54,.08);
+
+  /* accents */
+  --xd-accent:#633BFC;
+  --xd-accent-ink:#FFFFFF;
+  --xd-ok:#22C55E;
+
+  /* shape + motion */
+  --xd-radius:20px;
+  --xd-radius-sm:12px;
+  --xd-shadow:0 1px 2px rgba(25,36,54,.04), 0 8px 24px rgba(25,36,54,.06);
+  --xd-ease:cubic-bezier(.22,1,.36,1);
+
+  /* type */
+  --xd-font:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --xd-font-display:"Manrope", var(--xd-font);
+
+  /* rhythm */
+  --xd-pad-section:96px;
+  --xd-gutter:20px;
+  --xd-max:1200px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --xd-bg:#0B0B0F;
+    --xd-surface:#15151C;
+    --xd-ink:#F4F4F6;
+    --xd-ink-soft:rgba(244,244,246,.64);
+    --xd-line:rgba(255,255,255,.10);
+    --xd-shadow:0 1px 2px rgba(0,0,0,.40), 0 8px 24px rgba(0,0,0,.35);
+  }
+}
+
+:root[data-theme="dark"]{
+  --xd-bg:#0B0B0F;
+  --xd-surface:#15151C;
+  --xd-ink:#F4F4F6;
+  --xd-ink-soft:rgba(244,244,246,.64);
+  --xd-line:rgba(255,255,255,.10);
+  --xd-shadow:0 1px 2px rgba(0,0,0,.40), 0 8px 24px rgba(0,0,0,.35);
+}
+
+@media (max-width:760px){
+  :root{ --xd-pad-section:64px; --xd-gutter:16px; }
+}

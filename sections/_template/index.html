@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Section Name — X Designs</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<style>
+  /* preview chrome only — not part of the section */
+  html,body{margin:0}
+  body{background:var(--xd-bg);color:var(--xd-ink);font-family:var(--xd-font);-webkit-font-smoothing:antialiased}
+</style>
+</head>
+<body>
+
+<!-- XD:START section=section-name -->
+<style>
+  /* Every selector is prefixed .xd-section-name so the block can be dropped
+     into any page without colliding with the host site's CSS. */
+  .xd-section-name{
+    padding:var(--xd-pad-section) var(--xd-gutter);
+    background:var(--xd-bg);
+    color:var(--xd-ink);
+    font-family:var(--xd-font);
+  }
+  .xd-section-name .xd-wrap{max-width:var(--xd-max);margin:0 auto}
+  .xd-section-name h2{
+    margin:0 0 12px;
+    font-family:var(--xd-font-display);
+    font-size:clamp(28px,4vw,44px);
+    line-height:1.1;
+    letter-spacing:-.02em;
+  }
+  .xd-section-name p{margin:0;color:var(--xd-ink-soft);font-size:17px;line-height:1.6}
+</style>
+
+<section class="xd-section-name" aria-labelledby="xd-section-name-title">
+  <div class="xd-wrap">
+    <h2 id="xd-section-name-title">Section heading</h2>
+    <p>One sentence of supporting copy. Replace this whole block with the real section.</p>
+  </div>
+</section>
+<!-- XD:END section=section-name -->
+
+</body>
+</html>
