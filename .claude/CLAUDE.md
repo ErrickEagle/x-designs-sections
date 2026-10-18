@@ -1,36 +1,41 @@
 # Working notes for this repo
 
-## Shared skills library — say something at the start of every session
+## Always ask about the skills library at the start of a session
 
 The user keeps 336 design / animation / 3D / UI skills in the private repo
-`ErrickEagle/claude-skills`. Cloud containers are ephemeral, so those skills are
-gone at the start of each new session unless they are restored.
+`ErrickEagle/claude-skills`. Cloud containers are ephemeral, so they are not
+present by default.
 
-**Before doing other work, check and report:**
+**Every session, before doing other work, ask — no exceptions:**
+
+> "Should I load the skills library from your `claude-skills` repo?"
+
+Ask even if the skills look like they are already loaded. The user wants this
+check every single time, not only when something is missing. Wait for the
+answer before starting the real work.
+
+**On yes:**
 
 ```bash
-ls ~/.claude/skills 2>/dev/null | wc -l     # 300+ means already loaded
+ls ~/.claude/skills 2>/dev/null | wc -l     # 300+ means already in place
 ```
 
-- **Already loaded** (the SessionStart hook managed it) — say so in one line and
-  carry on. Don't ask.
-- **Not loaded** — ask the user: *"Would you like me to load the skills library
-  (336 design / animation / 3D skills)?"* Wait for an answer. Never load it
-  unannounced, and never silently work without it.
-
-**On yes** — the repo is private, so it must be attached to this session first:
+If already in place, say so and move on. Otherwise the repo is private and has
+to be attached to the session first:
 
 1. `add_repo` with owner `ErrickEagle`, repo `claude-skills`, access `read`
 2. `git clone --depth 1 https://github.com/ErrickEagle/claude-skills ~/.cache/claude-skills`
+   (skip if `~/.cache/claude-skills` already exists — the hook pre-fetches it)
 3. `~/.cache/claude-skills/install.sh`
 
-Takes about 6 seconds. The skills become callable on the following turn.
+Seconds, not minutes. The skills become callable on the following turn.
 
-**On no** — carry on without them and don't ask again this session.
+**On no:** carry on without them and don't ask again that session.
 
-## Why the hook sometimes doesn't cover it
+## What the hook does
 
-`.claude/hooks/session-start.sh` runs all of the above automatically, but its
-clone only succeeds when `claude-skills` was attached at session start. When the
-user starts a session on this repo alone, the hook exits 0 without doing
-anything — which is the case the question above is for.
+`.claude/hooks/session-start.sh` only pre-fetches the repo into
+`~/.cache/claude-skills` so that installing is instant once the user says yes.
+It deliberately does **not** install anything — the user wants to be asked
+first. Its fetch succeeds only when `claude-skills` was attached at session
+start; otherwise it exits 0 and the clone happens at step 2 above instead.

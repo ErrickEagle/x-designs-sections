@@ -1,8 +1,7 @@
 #!/bin/bash
-# SessionStart hook: restore the shared Claude skills library.
-#
-# Copy to <project-repo>/.claude/hooks/session-start.sh, chmod +x, and register
-# it in <project-repo>/.claude/settings.json.
+# SessionStart hook: pre-fetch the shared skills library so that installing it
+# is instant — but do NOT install it. The user wants to be asked first every
+# session; see .claude/CLAUDE.md.
 #
 # Never fails the session: every failure path exits 0.
 set -uo pipefail
@@ -17,14 +16,8 @@ if [ -d "$CACHE/.git" ]; then
   git -C "$CACHE" pull --ff-only --quiet 2>/dev/null || true
 else
   mkdir -p "$(dirname "$CACHE")"
-  git clone --depth 1 --quiet "$SKILLS_REPO" "$CACHE" 2>/dev/null || {
-    echo "claude-skills: clone failed (is the repo attached to this session?) — skipping" >&2
-    exit 0
-  }
-fi
-
-if [ -x "$CACHE/install.sh" ]; then
-  "$CACHE/install.sh" || echo "claude-skills: install step failed — skipping" >&2
+  git clone --depth 1 --quiet "$SKILLS_REPO" "$CACHE" 2>/dev/null \
+    || echo "claude-skills: pre-fetch skipped (repo not attached to this session)" >&2
 fi
 
 exit 0
