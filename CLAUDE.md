@@ -1,5 +1,9 @@
 # Conventions for this repo
 
+> **`site/` is a separate project** — the Strata marketing site, built with
+> Tailwind (it has a build step and a `package.json`). The section-library rules
+> below don't apply to it; see `site/README.md`.
+
 X Designs is a library of standalone website sections. No build step, no
 package manager, no framework — plain HTML and CSS that runs from the
 filesystem.

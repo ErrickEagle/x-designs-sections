@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+
+/* One container for every section: content is at most 1380px wide, with the side
+   gutter outside it, so all sections share the same left and right edges. */
+@layer components {
+  .shell {
+    --gutter: 24px;
+    width: 100%;
+    max-width: calc(1380px + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  @media (min-width: 768px) { .shell { --gutter: 40px; } }
+}
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body { background: #070708; color: #F5F5F1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

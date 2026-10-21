@@ -1,0 +1,12 @@
+{
+  "name": "strata-site",
+  "private": true,
+  "description": "Strata marketing site — templates and sections built with AI.",
+  "scripts": {
+    "build": "tailwindcss -c tailwind.config.js -i input.css -o dist/tw.css --minify",
+    "dev": "tailwindcss -c tailwind.config.js -i input.css -o dist/tw.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}
