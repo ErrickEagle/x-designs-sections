@@ -16,6 +16,8 @@ sections/
   _template/        Copy this to start a new section
   hero-split/       index.html (preview) + README.md (+ optional assets/)
 assets/             Shared images/SVGs used by more than one section
+pages/
+  strata-landing/   Whole-page builds — not sections, see their own README
 ```
 
 ## Using a section
