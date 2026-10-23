@@ -1,13 +1,13 @@
 {
   "name": "strata-site",
   "private": true,
-  "description": "Strata marketing site — templates and sections built with AI.",
+  "description": "Strata marketing site \u2014 templates and sections built with AI.",
   "scripts": {
     "build": "npm run build:css && npm run build:js",
     "build:css": "tailwindcss -c tailwind.config.js -i input.css -o dist/tw.css --minify",
-    "build:js": "esbuild src/main.js --bundle --minify --format=esm --target=es2020 --outfile=dist/main.js",
+    "build:js": "esbuild src/main.js --bundle --minify --format=iife --target=es2020 --outfile=dist/main.js",
     "dev": "tailwindcss -c tailwind.config.js -i input.css -o dist/tw.css --watch",
-    "dev:js": "esbuild src/main.js --bundle --format=esm --target=es2020 --outfile=dist/main.js --watch"
+    "dev:js": "esbuild src/main.js --bundle --format=iife --target=es2020 --outfile=dist/main.js --watch"
   },
   "devDependencies": {
     "@types/three": "^0.186.0",

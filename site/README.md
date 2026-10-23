@@ -54,9 +54,14 @@ npm run dev:js     # rebuilds on every save
 npm run build      # CSS and JS together
 ```
 
-No scene is on the page yet. When the first one lands, commit `dist/main.js`
-like `dist/tw.css` so the page still opens without a build, and load it with
-`<script type="module" src="dist/main.js">`.
+A scene goes on the page as `<canvas data-scene="name">`; `src/main.js` maps
+each name to its scene in `src/scenes/`. The CTA uses `cta-shapes`: glossy
+rounded cubes, hexagons, spheres and a ringed planet drifting behind the glass
+card and bouncing off each other. Without WebGL the canvas is removed and the
+CSS dusk scene shows on its own.
+
+`dist/main.js` is committed like `dist/tw.css`, so the page still opens without
+a build. It's a classic script (not a module) so it also runs from `file://`.
 
 ## Placeholders to replace before launch
 

@@ -621,11 +621,13 @@
         <div class="absolute inset-x-[-15%] bottom-[22%] h-[30%] rounded-t-[50%] bg-[#1A1622] shadow-[0_-1px_0_rgba(212,245,66,.25)]"></div>
         <div class="absolute inset-x-[-25%] bottom-[8%] h-[30%] rounded-t-[46%] bg-[#110F17] shadow-[0_-1px_0_rgba(212,245,66,.18)]"></div>
         <div class="absolute inset-x-[-10%] bottom-[-8%] h-[30%] rounded-t-[40%] bg-[#0A090D]"></div>
+        <!-- 3D: shapes drifting and colliding like small planets (src/scenes/cta-shapes.js) -->
+        <canvas class="absolute inset-0 h-full w-full" data-scene="cta-shapes"></canvas>
         <div class="grain absolute inset-0 opacity-[.16]"></div>
       </div>
 
       <div class="flex min-h-[clamp(520px,46vw,680px)] items-center justify-center px-[clamp(16px,4vw,64px)] py-16">
-        <div class="w-full max-w-[880px] rounded-[24px] bg-white/[.06] px-[clamp(24px,5vw,72px)] py-[clamp(40px,5vw,64px)] text-center shadow-[0_30px_80px_-30px_rgba(0,0,0,.9)] ring-1 ring-white/15 backdrop-blur-2xl">
+        <div data-scene-avoid class="w-full max-w-[880px] rounded-[24px] bg-white/[.06] px-[clamp(24px,5vw,72px)] py-[clamp(40px,5vw,64px)] text-center shadow-[0_30px_80px_-30px_rgba(0,0,0,.9)] ring-1 ring-white/15 backdrop-blur-2xl">
           <p class="text-[14px] font-bold text-volt">Start building</p>
           <h2 id="cta-title" class="mt-4 text-[clamp(2rem,4.4vw,3.9rem)] font-extrabold leading-[1.04] tracking-[-.045em] [text-wrap:balance]">Your next website is a few prompts away.</h2>
           <p class="mx-auto mt-6 max-w-[44ch] text-[clamp(1rem,1.2vw,1.12rem)] font-medium leading-[1.6] text-bone/80">Pick a template, prompt it into your brand and publish it. Today, not next quarter.</p>
@@ -1031,5 +1033,6 @@
   });
 })();
 </script>
+<script src="dist/main.js" defer></script>
 </body>
 </html>
