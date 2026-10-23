@@ -281,12 +281,18 @@
 </section>
 
 <!-- ═════════ works with ═════════ -->
-<section class="relative bg-night pb-[clamp(96px,10vw,160px)]" aria-labelledby="works-title">
-  <div class="shell">
-    <p id="works-title" class="text-center text-[15px] font-semibold text-bone-dim">Works with the tools you already build in</p>
-    <div class="mt-9 space-y-3.5" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)">
-      <div class="marquee"><div class="track" data-row="ai"></div></div>
-      <div class="marquee is-reverse"><div class="track" data-row="ship"></div></div>
+<!-- With WebGL the logos ride a 3D spiral (src/scenes/tool-vortex.js) and the
+     section grows to fit it; without, it stays a two-row logo slider. -->
+<section class="group relative bg-night pb-[clamp(96px,10vw,160px)] [&.is-3d]:pb-0" aria-labelledby="works-title">
+  <div class="relative group-[.is-3d]:h-[clamp(640px,100svh,940px)] group-[.is-3d]:overflow-hidden">
+    <canvas class="absolute inset-0 hidden h-full w-full group-[.is-3d]:block [mask-image:linear-gradient(to_bottom,transparent,#000_14%,#000_86%,transparent)]" data-scene="tool-vortex" data-logos="i-claude,i-figma,i-codex,i-framer,i-antigravity,i-webflow,i-claudecode,i-nextdotjs,i-cursor,i-react,i-windsurf,i-tailwindcss,i-lovable,i-vercel,i-v0,i-netlify,i-replit,i-cloudflare,i-githubcopilot" aria-hidden="true"></canvas>
+    <div class="shell relative group-[.is-3d]:flex group-[.is-3d]:h-full group-[.is-3d]:items-center group-[.is-3d]:justify-center">
+      <h2 id="works-title" class="text-center text-[15px] font-semibold text-bone-dim group-[.is-3d]:max-w-[17ch] group-[.is-3d]:text-[clamp(1.75rem,3.2vw,2.75rem)] group-[.is-3d]:font-extrabold group-[.is-3d]:leading-[1.08] group-[.is-3d]:tracking-[-.04em] group-[.is-3d]:text-bone">Works with the tools <span class="group-[.is-3d]:text-bone-dim">you already build in</span></h2>
+      <ul id="works-names" class="sr-only hidden group-[.is-3d]:block"></ul>
+      <div class="mt-9 space-y-3.5 group-[.is-3d]:hidden" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)">
+        <div class="marquee"><div class="track" data-row="ai"></div></div>
+        <div class="marquee is-reverse"><div class="track" data-row="ship"></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1009,6 +1015,9 @@
       <svg class="h-6 w-6 text-bone" fill="currentColor" aria-hidden="true"><use href="#${id}"/></svg>
       <span class="whitespace-nowrap text-[16px] font-bold tracking-[-.01em] text-bone/90">${name}</span>
     </li>`;
+  // names for screen readers when the 3D spiral replaces the slider
+  const names = document.getElementById('works-names');
+  if (names) names.innerHTML = [...ROWS.ai, ...ROWS.ship].map(([, name]) => `<li>${name}</li>`).join('');
   document.querySelectorAll('.marquee .track').forEach(track => {
     const items = ROWS[track.dataset.row].map(chip).join('');
     // the second copy exists only to make the loop seamless

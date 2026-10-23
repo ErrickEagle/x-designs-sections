@@ -11,7 +11,8 @@ as-is — no build needed just to look at it.
 1. **Hero** — rotating "You don't need…" line, two-line headline over a blurred wall of template screens, Browse / Learn more, payments line
 2. **Featured templates** — 3 × 3 grid of cards with live page previews
 3. **How it works** — three steps: choose, prompt into your brand, publish
-4. **Works with** — two-row logo slider of the tools the templates work in
+4. **Works with** — the tool logos on discs riding a 3D spiral tunnel, streaking
+   as they fly out of frame (falls back to a two-row logo slider without WebGL)
 5. **Why Strata** — five-card bento (text only for now; visuals to come)
 6. **Your options, side by side** — Strata vs hiring a designer or agency
 7. **Notes from people who shipped** — testimonials (placeholders, see below)
@@ -55,7 +56,8 @@ npm run build      # CSS and JS together
 ```
 
 A scene goes on the page as `<canvas data-scene="name">`; `src/main.js` maps
-each name to its scene in `src/scenes/`. The CTA uses `cta-shapes`: glossy
+each name to its scene in `src/scenes/`. "Works with" uses `tool-vortex`, which draws each logo in its `data-logos`
+list from the page's SVG sprite onto a disc. The CTA uses `cta-shapes`: glossy
 rounded cubes, hexagons, spheres and a ringed planet drifting behind the glass
 card and bouncing off each other. Without WebGL the canvas is removed and the
 CSS dusk scene shows on its own.
