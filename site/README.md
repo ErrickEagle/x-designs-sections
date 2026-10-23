@@ -42,6 +42,22 @@ Brand colours and the font live in `tailwind.config.js` (`night`, `bone`, `volt`
 Plus Jakarta Sans). The shared 1380px container is `.shell` in `input.css` —
 every section uses it, so their left and right edges line up.
 
+## 3D sections
+
+`three` is installed for 3D sections. Scene code lives in `src/`;
+`src/stage.js` has `mountStage()`, which every scene uses for the renderer,
+resizing, pausing while off-screen and a still frame under reduced motion.
+
+```bash
+npm run build:js   # bundles src/main.js to dist/main.js
+npm run dev:js     # rebuilds on every save
+npm run build      # CSS and JS together
+```
+
+No scene is on the page yet. When the first one lands, commit `dist/main.js`
+like `dist/tw.css` so the page still opens without a build, and load it with
+`<script type="module" src="dist/main.js">`.
+
 ## Placeholders to replace before launch
 
 These are stand-ins, not real data:
